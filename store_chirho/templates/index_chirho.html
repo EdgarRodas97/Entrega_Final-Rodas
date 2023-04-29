@@ -1,0 +1,34 @@
+{% extends  'base_chirho.html' %} 
+
+{% load static %}
+
+{% block body_chirho%}
+<div class="text-center">
+    <h1>Bienvenido a Store Chirho</h1>
+    <br/>
+    <br/>
+    <br/>
+    <h4>¿Deseas hacer una oferta?</h4>
+    <br/>
+    <a class="btn btn-primary" href="{% url 'create_offer_chirho' %}">Crear Oferta</a>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <hr>
+</div>
+<div id="container_chirho">
+<h4 id="" >Tus Ofertas</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Titulo Oferta</th>
+                <th>Publicado</th>
+                <th>Comentarios</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
