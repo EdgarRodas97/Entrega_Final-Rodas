@@ -6,29 +6,21 @@
 <div class="text-center">
     <h1>Bienvenido a Store Chirho</h1>
     <br/>
+    <h6>{{ message_chirho }}</h6>
     <br/>
     <br/>
-    <h4>¿Deseas hacer una oferta?</h4>
-    <br/>
-    <a class="btn btn-primary" href="{% url 'create_offer_chirho' %}">Crear Oferta</a>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <hr>
+{% if request.user.is_authenticated %}
+        <h4>¿Deseas hacer una oferta?</h4>
+        <br/>
+        <a class="btn btn-primary" href="{% url 'create_offer_chirho' %}">Crear Oferta</a>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <hr>
+{% endif %} 
 </div>
-<div id="container_chirho">
-<h4 id="" >Tus Ofertas</h4>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Titulo Oferta</th>
-                <th>Publicado</th>
-                <th>Comentarios</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
+
+    {% include "offer_chirho/list_offer_include_chirho.html" %}
+
 {% endblock %}

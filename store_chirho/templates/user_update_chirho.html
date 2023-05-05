@@ -1,0 +1,25 @@
+{% extends  'base_chirho.html' %} 
+
+{% load static %}
+
+{% block body_chirho%}
+<div class="text-center">
+    <h1>Editar Usuario {{ userchirho }}</h1>    
+    <br>
+    <hr id="hr_chirho">
+    <br>
+
+    <form class="form" action="{% url 'profile_update_chirho' %}" method="POST"> {% csrf_token %}
+
+        <table>
+
+            {{ form.as_table }}
+
+        </table>
+    
+        <button class="btn btn-primary">Guardar</button>
+
+    </form>
+    <br>
+</div>
+{% endblock %}

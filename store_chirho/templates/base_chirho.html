@@ -15,9 +15,14 @@
                 <a class="btn btn-light" href="{% url 'monitor_list_offer_chirho' %}">Monitores</a>
                 <a class="btn btn-light" href="{% url 'notebook_list_offer_chirho' %}">Notebooks</a>
                 <a class="btn btn-light" href="{% url 'tv_list_offer_chirho' %}">Televisores</a>
-                <a class="btn btn-light" href="{% url 'index_chirho' %}">Sobre mí</a>
-                <a class="btn_chirho" href="">Login</a>
-                <a class="btn_chirho" href="">Registrarse</a>
+                <a class="btn btn-light" href="{% url 'aboutme_chirho' %}">Sobre mí</a>
+                {% if not request.user.is_authenticated %}
+                    <a class="btn_chirho" href="{% url 'login_chirho' %}">Login</a>
+                    <a class="btn_chirho" href="{% url 'register_chirho' %}">Registrarse</a>
+                {% else %}
+                    <a class="btn_chirho" href="{% url 'profile_update_chirho' %}">Editar perfil</a>
+                    <a class="btn_chirho" href="{% url 'logout_chirho' %}">logout</a>
+                {% endif %}    
             </div>
         </nav>
         <br/>
@@ -25,11 +30,16 @@
         <br/>
         {% block body_chirho %}
         {% endblock %}
+        <br/>
+        <br/>
+        <br/>
+       <!---
         <footer class="bg-light text-center text-lg-start">
             <div id="footer_chirho" class="text-center p-3 text-light" >
               © 2023 - Store Chirho
               <a class="text-light" href="">Contactanos</a>
             </div>
         </footer>
+        --->
     </body>
 </html>

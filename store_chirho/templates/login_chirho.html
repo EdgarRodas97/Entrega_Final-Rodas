@@ -1,0 +1,30 @@
+{% extends  'base_chirho.html' %} 
+
+{% load static %}
+
+{% block body_chirho%}
+<div class="text-center">
+    <h1>Iniciar Sesión</h1>    
+    <br>
+    <hr id="hr_chirho">
+    <br>
+
+    <form class="form" action="{% url 'login_chirho' %}" method="POST"> {% csrf_token %}
+
+        <table>
+
+            {{ form.as_table }}
+
+        </table>
+    
+        <h6>{{ message_chirho }}</h6>
+
+        <button class="btn btn-primary">Login</button>
+
+    </form>
+    <br>
+    <hr id="hr_chirho">
+    <br>
+    <h6>¿Aun no tienes cuenta? <a href="{% url 'register_chirho' %}">Registrate</a></h6>
+</div>
+{% endblock %}

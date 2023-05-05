@@ -1,0 +1,33 @@
+{% load static %}
+{% block body_chirho%}
+    <div id="container_chirho">
+        <h4>Tus ofertas</h4>
+        {% if not offers_chirho %}
+            No tienes ofertas por desplegar
+        {% else %}    
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="color: rgb(252, 116, 6);"><b>Titulo</b></th>
+                        <th style="color: rgb(252, 116, 6);"><b>Momento</b></th>
+                        <th style="color: rgb(252, 116, 6);"><b>Comentarios</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for list_offers_chirho in offers_chirho %}    
+                    <tr>
+                        <td>
+                            {{ list_offers_chirho.title_chirho }}
+                        </td>
+                        <td>
+                            {{ list_offers_chirho.post_moment_chirho }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                {% endfor %}    
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock%}

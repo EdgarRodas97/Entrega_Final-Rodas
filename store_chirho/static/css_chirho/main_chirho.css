@@ -16,10 +16,29 @@
     background-color: var(--bs-table-bg);
     border-bottom-width: 1px;
     box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+    margin-left: 10px;
+    width: 50%;
 }
 
 #container_chirho {
     width:500px;
     height:450px;
     margin-left: 10px;
+}
+
+.form {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hr_chirho {
+   width:500px;
+   margin: auto;
+   height: 5px;
+   background-color: #043253;
 }

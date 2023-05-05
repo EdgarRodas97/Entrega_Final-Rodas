@@ -3,5 +3,36 @@
 {% load static %}
 
 {% block body_chirho%}
-    <h1>Aquí el listado de ofertas de computadoras</h1>
+    <div class="container_chirho">
+        <h1>Ofertas sobre Computadoras</h1>
+        <br/>
+        {% if not offers_chirho.exists %}
+            No hay ofertas por desplegar
+        {% else %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="color: rgb(252, 116, 6);"><b> Autor</b></th>
+                        <th style="color: rgb(252, 116, 6);"><b> Oferta</b></th>
+                        <th style="color: rgb(252, 116, 6);"><b> Momento</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for list_computer_offers_chirho in offers_chirho %} 
+                    <tr>
+                        <td>
+                            {{ list_computer_offers_chirho.user_chirho.username }}:     
+                        </td>
+                        <td>
+                            {{ list_computer_offers_chirho.title_chirho }}  <a class="btn btn-primary" href="">Ver</a>
+                        </td>
+                        <td>
+                            {{ list_computer_offers_chirho.post_moment_chirho }}
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}  
+            </table>
+        {% endif %}    
+    <div>
 {% endblock%}
