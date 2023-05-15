@@ -5,32 +5,33 @@
 {% block body_chirho%}
     <style>
     .offer_photo_chirho {
-        max-width: 120px;
+        width: 500px;
+        height: 500px;
     }
     </style>
-    <div class="row d-flex">
-        <div class="col-lg-8">
-            <div class="row">
-                <div class="col-md-3">
-                    Titulo: {{ offers_chirho.title_chirho }}
-                </div>
-                <div class="col-md-3">
-                    Descripción: {{ offers_chirho.post_chirho }}
-                </div>
-                <div class="col-md-3">
-                    Foto: 
-                    {% if offers_chirho.post_picture_chirho %}
-                    <a href="{{ offers_chirho.post_picture_chirho.url }}">
-                        <img class="offer_photo_chirho" src="{{ offers_chirho.post_picture_chirho.url }}"/>
-                    </a>
-                    {% else %}
-                    No Tiene
-                    {% endif %}
-                </div>
-                <div class="col-md-3">
-                    Precio: {{ offers_chirho.price_chirho }}
-                </div>
+        <div class="text-center">
+            <div>
+                <h1 style="color: #043253;"><b>{{ offers_chirho.title_chirho }} | $ {{ offers_chirho.price_chirho }}</b></h1>
             </div>
+            <hr id="hr_chirho">
+            <br>
+            <div>
+                {% if offers_chirho.post_picture_chirho %}
+                <a href="{{ offers_chirho.post_picture_chirho.url }}">
+                    <img class="offer_photo_chirho" src="{{ offers_chirho.post_picture_chirho.url }}"/>
+                </a>
+                {% else %}
+                    No Tiene
+                {% endif %}
+            </div>
+            <br>
+            <br>
+            <div style="margin-left: 780px; margin-right: 780px; background-color: #ECEFF1;">
+                    {{ offers_chirho.post_chirho }}
+            </div>
+            <br>
+            <br>
+            <div><b>Contacto:</b> <a href="mailto: {{ offers_chirho.contact_chirho }}">{{ offers_chirho.contact_chirho }}</a></div>
+            <hr id="hr_chirho">
         </div>
-    </div>
 {% endblock%}

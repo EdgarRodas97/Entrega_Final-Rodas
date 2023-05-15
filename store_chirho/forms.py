@@ -39,6 +39,7 @@ class CreateOfferFormChirho(ModelForm):
                 'title_chirho',
                 'post_type_chirho',
                 'post_chirho',
+                'contact_chirho',
                 'price_chirho',
                 'post_picture_chirho',
             ]

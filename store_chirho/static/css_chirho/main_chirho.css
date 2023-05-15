@@ -7,10 +7,6 @@
     font-weight: bold;
 }
 
-#footer_chirho {
-    background-color: #043253;
-}
-
 .table {
     padding: .3rem .3rem;
     background-color: var(--bs-table-bg);

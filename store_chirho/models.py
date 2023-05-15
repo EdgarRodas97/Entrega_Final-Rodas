@@ -22,6 +22,7 @@ class PostChirho(models.Model):
         max_length=255, null=False, verbose_name='Tipo publicación')
     post_chirho = models.TextField(blank=False, max_length=400, null=False,
         verbose_name='Descripción de la publicación')
+    contact_chirho = models.CharField(blank=True, null=True, max_length=250, verbose_name='Contacto')
     price_chirho = models.DecimalField(
         db_index=True, decimal_places=2,max_digits=8,
         null=False, verbose_name='Precio en $')
