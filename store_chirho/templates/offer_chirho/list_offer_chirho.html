@@ -4,7 +4,7 @@
 
 {% block body_chirho%}
     <div class="container_chirho">
-        <h1>Ofertas sobre Computadoras</h1>
+        <h1>Listado de ofertas de {{ post_type_label_chirho }}</h1>
         <br/>
         {% if not offers_chirho.exists %}
             No hay ofertas por desplegar
@@ -18,16 +18,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for list_computer_offers_chirho in offers_chirho %} 
+                {% for offer_chirho in offers_chirho %} 
                     <tr>
                         <td>
-                            {{ list_computer_offers_chirho.user_chirho.username }}:     
+                            {{ offer_chirho.user_chirho.username }}:     
                         </td>
                         <td>
-                            {{ list_computer_offers_chirho.title_chirho }}  <a class="btn btn-primary" href="">Ver</a>
+                            <a href="{% url 'detail_offer_chirho' offer_chirho.id_chirho %}">{{ offer_chirho.title_chirho }}</a>
                         </td>
                         <td>
-                            {{ list_computer_offers_chirho.post_moment_chirho }}
+                            {{ offer_chirho.post_moment_chirho }}
                         </td>
                     </tr>
                 </tbody>

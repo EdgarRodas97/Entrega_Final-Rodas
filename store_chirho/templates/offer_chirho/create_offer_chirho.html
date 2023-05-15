@@ -9,7 +9,7 @@
         <hr id="hr_chirho">
         <br>
     
-        <form class="form" action="{% url 'create_offer_chirho' %}" method="POST"> {% csrf_token %}
+        <form class="form" enctype="multipart/form-data" action="{% url 'create_offer_chirho' %}" method="POST"> {% csrf_token %}
     
             <table>
     

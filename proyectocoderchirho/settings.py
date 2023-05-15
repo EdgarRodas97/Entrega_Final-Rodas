@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#ot+5j68&u&)nhk8%zj7&_@^=*$^1wf50@%6$ek9pem3et(w)k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'store_chirho.context_processors_chirho.base_processor_chirho',
             ],
         },
     },

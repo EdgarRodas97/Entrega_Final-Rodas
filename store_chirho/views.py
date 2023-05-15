@@ -76,7 +76,7 @@ def user_update_chirho(request):
         form=UserEditForm(request.POST)
         if form.is_valid():
             info=form.cleaned_data
-            user_chirho.email_chirho=info["email_chirho"]
+            user_chirho.email=info["email_chirho"]
             user_chirho.password1=info["password1"]
             user_chirho.password2=info["password2"]
             user_chirho.first_name=info["first_name"]

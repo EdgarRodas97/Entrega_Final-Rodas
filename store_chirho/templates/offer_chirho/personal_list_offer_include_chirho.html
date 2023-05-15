@@ -14,13 +14,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for list_offers_chirho in offers_chirho %}    
+                {% for offer_chirho in offers_chirho %}    
                     <tr>
                         <td>
-                            {{ list_offers_chirho.title_chirho }}
+                            <a href="{%  url 'detail_offer_chirho' offer_chirho.id_chirho %}" >{{ offer_chirho.title_chirho }}</a>
                         </td>
                         <td>
-                            {{ list_offers_chirho.post_moment_chirho }}
+                            {{ offer_chirho.post_moment_chirho }}
                         </td>
                         <td>
                         </td>

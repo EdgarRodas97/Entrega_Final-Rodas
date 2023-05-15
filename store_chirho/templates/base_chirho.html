@@ -10,11 +10,11 @@
         <nav class="navbar navbar-expand-lg navbar-light backg">
             <div class="container">
                 <a class="btn btn-light" href="{% url 'index_chirho' %}">Inicio</a>
-                <a class="btn btn-light" href="{% url 'computer_list_offer_chirho' %}">Computadoras</a>
-                <a class="btn btn-light" href="{% url 'gaming_list_offer_chirho' %}">Gaming</a>
-                <a class="btn btn-light" href="{% url 'monitor_list_offer_chirho' %}">Monitores</a>
-                <a class="btn btn-light" href="{% url 'notebook_list_offer_chirho' %}">Notebooks</a>
-                <a class="btn btn-light" href="{% url 'tv_list_offer_chirho' %}">Televisores</a>
+                <a class="btn btn-light" href="{% url 'list_offer_chirho' PostTypeChirho.COMPUTER_CHIRHO %}">Computadoras</a>
+                <a class="btn btn-light" href="{% url 'list_offer_chirho' PostTypeChirho.GAMING_CHIRHO %}">Gaming</a>
+                <a class="btn btn-light" href="{% url 'list_offer_chirho' PostTypeChirho.MONITOR_CHIRHO %}">Monitores</a>
+                <a class="btn btn-light" href="{% url 'list_offer_chirho' PostTypeChirho.NOTEBOOK_CHIRHO %}">Notebooks</a>
+                <a class="btn btn-light" href="{% url 'list_offer_chirho' PostTypeChirho.TV_CHIRHO %}">Televisores</a>
                 <a class="btn btn-light" href="{% url 'aboutme_chirho' %}">Sobre mí</a>
                 {% if not request.user.is_authenticated %}
                     <a class="btn_chirho" href="{% url 'login_chirho' %}">Login</a>

@@ -20,7 +20,7 @@ class RegisterUserFormChirho(UserCreationForm):
 
 
 class UserEditForm(UserCreationForm):
-    email_chirho = forms.EmailField(label="Email:")
+    email = forms.EmailField(label="Email:")
     password1 = forms.CharField(label="Contraseña:", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirmar contraseña:", widget=forms.PasswordInput)
     first_name = forms.CharField(label="Modificar Nombre:")
@@ -28,8 +28,9 @@ class UserEditForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields=["email_chirho", "password1", "password2", "first_name", "last_name"]
+        fields=["email", "password1", "password2", "first_name", "last_name"]
         help_texts = {k:"" for k in fields}
+        
 
 class CreateOfferFormChirho(ModelForm):
         class Meta:
