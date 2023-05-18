@@ -9,7 +9,6 @@
     <h6>{{ message_chirho }}</h6>
     <br/>
     <br/>
-{% if request.user.is_authenticated %}
         <h4>¿Deseas hacer una oferta?</h4>
         <br/>
         <a class="btn btn-primary" href="{% url 'create_offer_chirho' %}">Crear Oferta</a>
@@ -18,9 +17,6 @@
         <br/>
         <br/>
         <hr>
-{% endif %} 
 </div>
-
-    {% include "offer_chirho/personal_list_offer_include_chirho.html" %}
-
+{% include "offer_chirho/personal_list_offer_include_chirho.html" %}
 {% endblock %}

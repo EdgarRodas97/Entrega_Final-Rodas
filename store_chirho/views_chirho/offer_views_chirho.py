@@ -1,7 +1,7 @@
 
 from typing import Any, Optional
 from django.db import models
-from django.views.generic import TemplateView, CreateView, ListView, DetailView
+from django.views.generic import TemplateView, CreateView, ListView, DetailView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from store_chirho.forms import CreateOfferFormChirho
 from django.contrib import messages
@@ -51,9 +51,43 @@ class DetailOfferChirho(LoginRequiredMixin, DetailView):
      
     def get_context_data(self, *args, **kwargs):
         context_chirho = super().get_context_data(**kwargs)
-        context_chirho["offers_chirho"] = get_object_or_404(PostChirho, id_chirho=self.kwargs['offer_id_chirho'])
+        context_chirho["offer_chirho"] = get_object_or_404(PostChirho, id_chirho=self.kwargs['offer_id_chirho'])
         return context_chirho
     
     def get_object(self):
         return PostChirho.objects.get(pk=self.kwargs['offer_id_chirho'])
+
+
+class UpdateOfferChirho(LoginRequiredMixin, UpdateView):
+    template_name = "offer_chirho/offer_update_chirho.html"
+    model = PostChirho
+    form_class = CreateOfferFormChirho
+
+    def test_func(self):
+        offer_chirho = get_object_or_404(PostChirho, id_chirho=self.kwargs['offer_id_chirho'])
+        return offer_chirho.user_chirho == self.request.user
+
+    def get_context_data(self, **kwargs):
+        context_chirho = super().get_context_data(**kwargs)
+        context_chirho["offer_chirho"] = get_object_or_404(PostChirho, id_chirho=self.kwargs['offer_id_chirho'])
+        return context_chirho
+
+    def get_object(self):
+        return PostChirho.objects.get(pk=self.kwargs['offer_id_chirho'])
+    def form_valid(self, form):
+        form.instance.user_chirho = self.request.user
+        return super().form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs_chirho = super().get_form_kwargs()
+        return kwargs_chirho
+
+    def get_success_url(self):
+        messages.success(self.request, "Cambios guardados exitosamente")
+        return reverse(
+            'detail_offer_chirho',
+            kwargs={'offer_id_chirho': self.kwargs["offer_id_chirho"]})
+
+
+
     

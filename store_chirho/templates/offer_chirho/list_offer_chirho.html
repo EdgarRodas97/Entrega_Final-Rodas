@@ -3,36 +3,45 @@
 {% load static %}
 
 {% block body_chirho%}
-    <div class="container_chirho">
-        <h1>Listado de ofertas de {{ post_type_label_chirho }}</h1>
-        <br/>
-        {% if not offers_chirho.exists %}
-            No hay ofertas por desplegar
-        {% else %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th style="color: rgb(252, 116, 6);"><b> Autor</b></th>
-                        <th style="color: rgb(252, 116, 6);"><b> Oferta</b></th>
-                        <th style="color: rgb(252, 116, 6);"><b> Momento</b></th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for offer_chirho in offers_chirho %} 
-                    <tr>
-                        <td>
-                            {{ offer_chirho.user_chirho.username }}:     
-                        </td>
-                        <td>
-                            <a href="{% url 'detail_offer_chirho' offer_chirho.id_chirho %}">{{ offer_chirho.title_chirho }}</a>
-                        </td>
-                        <td>
-                            {{ offer_chirho.post_moment_chirho }}
-                        </td>
-                    </tr>
-                </tbody>
-                {% endfor %}  
-            </table>
-        {% endif %}    
-    <div>
+    <style>
+    .offer_photo_chirho {
+        width: 150px;
+        height: 150px;
+    }
+    </style>
+    <h1 style="color: #043253; text-align:center"><b>Listado de ofertas de {{ post_type_label_chirho }} </b></h1>
+    <br>
+    {% if not offers_chirho.exists %}
+        <h6 style="text-align:center">No hay ofertas por desplegar</h6>
+    {% else %}
+        <div id="container_chirho">
+            <br>
+            <hr id="hr_chirho">
+            <br>
+            {% for offer_chirho in offers_chirho %}
+                <div><h4><b><a href="{% url 'detail_offer_chirho'  offer_chirho.id_chirho %}">{{ offer_chirho.title_chirho }}</a> | $ {{ offer_chirho.price_chirho }}</b></h4></div>
+                <div>
+                    {% if offer_chirho.post_picture_chirho %}
+                        <a href="{{ offer_chirho.post_picture_chirho.url }}">
+                            <img class="offer_photo_chirho" src="{{ offer_chirho.post_picture_chirho.url }}"/>
+                        </a>
+                    {% else %}
+                        No hay foto
+                    {% endif %}
+                </div>
+                <br>
+                <div>
+                    <h6><b style="color: rgb(252, 116, 6);"    >{{ offer_chirho.user_chirho.username }}</b>  | {{ offer_chirho.post_moment_chirho }}</h6>
+                     {% if request.user == offer_chirho.user_chirho %}
+                        <a class="btn btn-primary btn-sm" href="{% url 'update_offer_chirho'  offer_chirho.id_chirho %}">
+                            Editar
+                         </a>
+                    {% endif %}
+                </div>
+                <br>
+                <hr id="hr_chirho">
+                <br>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock%}

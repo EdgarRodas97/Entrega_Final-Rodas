@@ -1,7 +1,7 @@
 {% load static %}
 {% block body_chirho%}
     <div id="container_chirho">
-        <h4>Tus ofertas</h4>
+        <h3 style="color: #043253;"><b>Tus ofertas</b></h3>
         {% if not offers_chirho %}
             No tienes ofertas por desplegar
         {% else %}    
@@ -10,7 +10,7 @@
                     <tr>
                         <th style="color: rgb(252, 116, 6);"><b>Titulo</b></th>
                         <th style="color: rgb(252, 116, 6);"><b>Momento</b></th>
-                        <th style="color: rgb(252, 116, 6);"><b>Comentarios</b></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +23,9 @@
                             {{ offer_chirho.post_moment_chirho }}
                         </td>
                         <td>
+                            {% if request.user == offer_chirho.user_chirho %}
+                                <a class="btn btn-primary" href="{% url 'update_offer_chirho'  offer_chirho.id_chirho %}">Editar</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}    

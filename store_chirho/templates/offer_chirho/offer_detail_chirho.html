@@ -11,14 +11,19 @@
     </style>
         <div class="text-center">
             <div>
-                <h1 style="color: #043253;"><b>{{ offers_chirho.title_chirho }} | $ {{ offers_chirho.price_chirho }}</b></h1>
+                <h1 style="color: #043253;"><b>{{ offer_chirho.title_chirho }} | $ {{ offer_chirho.price_chirho }}</b></h1>
             </div>
             <hr id="hr_chirho">
             <br>
+            <div><h6><b style="color: rgb(252, 116, 6);">{{ offer_chirho.user_chirho }}:</b></h6></div>
+            <div style="margin-left: 780px; margin-right: 780px; background-color: #ECEFF1;">
+                {{ offer_chirho.post_chirho }}
+            </div>
+            <br>
             <div>
-                {% if offers_chirho.post_picture_chirho %}
-                <a href="{{ offers_chirho.post_picture_chirho.url }}">
-                    <img class="offer_photo_chirho" src="{{ offers_chirho.post_picture_chirho.url }}"/>
+                {% if offer_chirho.post_picture_chirho %}
+                <a href="{{ offer_chirho.post_picture_chirho.url }}">
+                    <img class="offer_photo_chirho" src="{{ offer_chirho.post_picture_chirho.url }}"/>
                 </a>
                 {% else %}
                     No Tiene
@@ -26,12 +31,14 @@
             </div>
             <br>
             <br>
-            <div style="margin-left: 780px; margin-right: 780px; background-color: #ECEFF1;">
-                    {{ offers_chirho.post_chirho }}
-            </div>
-            <br>
-            <br>
-            <div><b>Contacto:</b> <a href="mailto: {{ offers_chirho.contact_chirho }}">{{ offers_chirho.contact_chirho }}</a></div>
+            <div><b style="color: rgb(252, 116, 6);">Contacto:</b> <a href="mailto: {{ offer_chirho.contact_chirho }}">{{ offer_chirho.contact_chirho }}</a></div>
             <hr id="hr_chirho">
+            <br>
+            <br>
+            {% if request.user == offer_chirho.user_chirho %}
+                <a class="btn btn-primary" href="{% url 'update_offer_chirho'  offer_chirho.id_chirho %}">
+                    Editar
+                </a>
+            {% endif %}
         </div>
 {% endblock%}
